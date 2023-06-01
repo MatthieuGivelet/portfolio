@@ -1,5 +1,6 @@
 <template>
-    <div class="cadre">
+    <section id="about">
+            <div class="cadre">
             <div class="block">
             <section class="about">
         <div class="txt">
@@ -45,6 +46,7 @@
         </div>
     </div>
     </div>
+    </section>
 </template>
 
 <script>
@@ -61,7 +63,7 @@ export default {}
     color: white;
     padding: 11em 20em 20em 20em;
     position: relative;
-    z-index: -3;
+    z-index: 0;
     overflow: hidden;
     margin-bottom: 15em;
 }
@@ -109,14 +111,24 @@ export default {}
     background: #4E4AFF;
     border-radius: 30px;
     border: 1px solid rgba(255, 255, 255, 0.103);
+    transition: .3s ease-in-out;
+}
+
+.btn2:hover {
+    background: #FFA53B;
 }
 
 .btn3 {
     padding: 1em 1em;
-    background: #4d4aff4b;
+    background: #7674ff4b;
     border-radius: 50px;
     margin-left: 1em;
     border: 1px solid rgba(255, 255, 255, 0.027);
+    transition: .3s ease-in-out;
+}
+
+.btn3:hover {
+    background: #4E4AFF;
 }
 
 .btn3 i {

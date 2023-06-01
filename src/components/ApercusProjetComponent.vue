@@ -25,6 +25,8 @@
 <style>
 
 main {
+    position: relative;
+    z-index: 1;
     margin-top: 8em;
 }
 

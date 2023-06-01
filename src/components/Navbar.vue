@@ -1,28 +1,92 @@
 <template>
-  <main>
+  <header
+    :class="currentScroll >= 100 ? 'active-navbar' : null"
+  >
       <div class="nav">
-    <RouterLink to ="/"><img src="../assets/Matthieu .G.png" alt=""></RouterLink>
-    <div class="link">
-          <a href="">A propos</a>
-          <RouterLink to = "/Projet">Projet <i class="fa-solid fa-chevron-down"></i></RouterLink>
-    <div class="btn-nav">
-      <a href="">Contactez moi</a>
-      <div class="anim"></div>
-    </div>
-    </div>
-  </div>
-  </main>
+        <RouterLink to ="/"><img src="../assets/Matthieu .G.png" alt=""></RouterLink>
+          <div class="link">
+          <a href="#about">A propos</a>
+          <div class="lien-projet">
+                 <RouterLink to = "/Projet">Projet </RouterLink>
+                  <i class="fa-solid fa-chevron-down" @click="handleDropdownMenu" :class="rotate"></i>
+          </div>
+        <div class="btn-nav">
+          <a href="#contact">Contactez moi</a>
+        </div>
+        </div>
+      </div>
+      <MenuDeroulentComposent 
+        v-if="showMenu"
+        :class="animMenuOut"
+      />
+  </header>
 </template>
 
 <script>
-  export default {}
+import MenuDeroulentComposent from './MenuDeroulentComposent.vue'
+  export default {
+    data () {
+      return {
+        currentScroll: 0,
+        showMenu: false,
+        animMenuOut: null,
+        rotate: null,
+      }
+    },
+    components: {
+      MenuDeroulentComposent
+    },
+    computed: {
+      /* navBackground: function () {
+        return this.currentScroll <= 100 ? "transparent" : "white"
+      }, */
+    },
+    created () {
+      window.addEventListener("scroll", this.handleScroll)
+    },
+    unmounted () {
+      window.removeEventListener("scroll", this.handleScroll)
+    },
+    methods: {
+      handleScroll: function () {
+        this.currentScroll = window.scrollY
+      },
+      handleDropdownMenu() {
+        if (this.showMenu) {
+          this.animMenuOut = "anim-menu-out"
+          setTimeout(
+            () => {
+              this.showMenu = false
+            },
+            400
+          )
+        } else {
+          this.animMenuOut = null
+          this.showMenu = true
+        }
+      },
+      handlechevron() {
+        if (this.showMenu) {
+          this.rotate ="rotate"
+          this.showMenu = false
+        }
+      }
+    }
+  }
 </script>
 
 <style scoped>
 
-main {
-  max-width: 1280px;
-  margin: auto;
+.rotate {
+  transform: rotate(180deg);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: white;
+  transition: .5s ease-in-out;
 }
 
 .nav, .link {
@@ -32,8 +96,18 @@ main {
 }
 
 .nav {
+  max-width: 1280px;
+  margin: auto;
   justify-content: space-between;
-  margin-top: 2.5em;
+  padding: 2.5em;
+}
+
+.lien-projet {
+  position: relative;
+}
+
+.lien-projet i:hover {
+  cursor: pointer;
 }
 
 .link {
@@ -47,6 +121,11 @@ main {
 
 .link i {
   margin-left: .5em;
+  transition: .3s ease-in-out;
+}
+
+.link i:hover {
+  transform: rotate(180deg);
 }
 
 .btn-nav a {
@@ -60,5 +139,10 @@ main {
 
 .btn-nav a:hover {
   background: #FFA53B;
+}
+
+.active-navbar {
+  background: rgb(255, 255, 255);
+  box-shadow: 0px 5px 50px 0px rgba(50, 50, 93, 0.20);
 }
 </style>

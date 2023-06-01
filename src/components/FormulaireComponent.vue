@@ -1,6 +1,7 @@
 <template>
-<main>
+<main id="contact">
     <div class="form">
+        <img class="pastille" src="../assets/pastille.png" alt="">
         <p class="main-title">Votre projet </p>
         <div class="service">
             <div class="title1">
@@ -28,15 +29,21 @@
         </div>
         <div class="nom-prenom">
             <div class="nom">
-                <p>Nom</p>
+                <p class="title-form">Nom</p>
                 <input type="text" name="nom" v-model="nom">
             </div>
             <div class="prenom">
-                <p>Prenom</p>
+                <p class="title-form">Prenom</p>
                 <input type="text" name="prenom" v-model="prenom">
             </div>
         </div>
-
+        <div class="projet">
+            <p class="title-form">Details du projet</p>
+                <input type="text" name="details" v-model="details">
+        </div>
+        <div class="boutton-form">
+            <button class="boutton">Envoyer</button>
+        </div>
     </div>
 </main>
 </template>
@@ -82,8 +89,15 @@ main {
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 50px;
     padding: 4em 4em;
+    position: relative;
 }
-
+.pastille {
+    width: 120px;
+    position: absolute;
+    z-index: 1;
+    top: -6%;
+    right: 10%;
+}
 .btn-input {
     display: none;
 }
@@ -112,8 +126,47 @@ main {
     display: inline-block;
 }
 
+*:focus {
+    outline: none;
+}
+
+.title-form {
+    font-size: 1.2em;
+    font-weight: 500;
+    letter-spacing: -2px;
+    margin-bottom: 2em;
+}
+
 .nom input, .prenom input {
+    width: 540px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    margin-bottom: 2em;
+}
+
+.projet input {
     width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.boutton {
+    background-color: #4d4aff00;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    color: rgb(0, 0, 0);
+    padding: 1em 2em;
+    font-family: 'Lexend Exa', sans-serif;
+    letter-spacing: -1px;
+    border-radius: 30px;
+    font-size: medium;
+    margin-top: 4em;
+    transition: .3s ease-in-out;
+}
+
+.boutton:hover {
+    background-color: #4E4AFF;
+    border: 1px solid rgba(255, 255, 255, 0.103);
+    color: white;
 }
 
 </style>
