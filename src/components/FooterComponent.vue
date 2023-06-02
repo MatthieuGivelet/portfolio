@@ -3,7 +3,7 @@
     <div class="container-footer">
         <div class="left-footer">
             <div class="txt-footer">
-                <img src="../assets/Logo Footer.png" alt="">
+                <img src="../assets/Logo Footer.svg" alt="">
                 <p>Graphiste & developpeur front end junior.</p>
             </div>
             <div class="social">

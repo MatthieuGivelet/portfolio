@@ -20,6 +20,8 @@ export default {}
     flex-direction: column;
     width: max-content;
     background-color: rgb(255, 255, 255);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.192);
     padding: 2.5em 8em 2.5em 3em;
     border-radius: 20px;
     right: 18%;

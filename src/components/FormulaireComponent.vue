@@ -97,7 +97,15 @@ main {
     z-index: 1;
     top: -6%;
     right: 10%;
+    filter: drop-shadow(0px 0px 0px #16161ce3);
+    transition: .3s ease-in-out;
 }
+
+/*.pastille:hover {
+    transform: scale(105%) rotate(10deg) translateY(-10px);
+    filter: drop-shadow(0px 10px 3px #16161c48);
+}*/
+
 .btn-input {
     display: none;
 }

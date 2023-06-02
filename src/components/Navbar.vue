@@ -3,12 +3,15 @@
     :class="currentScroll >= 100 ? 'active-navbar' : null"
   >
       <div class="nav">
-        <RouterLink to ="/"><img src="../assets/Matthieu .G.png" alt=""></RouterLink>
+        <RouterLink to ="/"><img src="../assets/Logo navbar.svg" alt=""></RouterLink>
           <div class="link">
           <a href="#about">A propos</a>
           <div class="lien-projet">
                  <RouterLink to = "/Projet">Projet </RouterLink>
-                  <i class="fa-solid fa-chevron-down" @click="handleDropdownMenu" :class="rotate"></i>
+                 <div class="chevron" @click="handleDropdownMenu">
+                  <i class="fa-solid fa-chevron-down" @click="handlechevron" :class="rotate"></i>
+                 </div>
+                  
           </div>
         <div class="btn-nav">
           <a href="#contact">Contactez moi</a>
@@ -68,7 +71,8 @@ import MenuDeroulentComposent from './MenuDeroulentComposent.vue'
       handlechevron() {
         if (this.showMenu) {
           this.rotate ="rotate"
-          this.showMenu = false
+        } else {
+          this.rotate = "rotate-inverse"
         }
       }
     }
@@ -78,8 +82,13 @@ import MenuDeroulentComposent from './MenuDeroulentComposent.vue'
 <style scoped>
 
 .rotate {
+  transform: rotate(0deg);
+}
+
+.rotate-inverse {
   transform: rotate(180deg);
 }
+
 
 header {
   position: sticky;
@@ -104,6 +113,7 @@ header {
 
 .lien-projet {
   position: relative;
+  display: flex;
 }
 
 .lien-projet i:hover {
@@ -123,11 +133,6 @@ header {
   margin-left: .5em;
   transition: .3s ease-in-out;
 }
-
-.link i:hover {
-  transform: rotate(180deg);
-}
-
 .btn-nav a {
   color: white;
   padding: 1em 2em;
